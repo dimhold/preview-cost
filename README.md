@@ -78,6 +78,32 @@ The bootstrap interval describes sampling error on this machine at this moment. 
 
 One connection, one client, no contention. With concurrent users on the same model, A's lock duration is exactly the part that stops being free, and this harness does not measure that. That is the next thing worth building.
 
+## Prior work
+
+Checked 2026-08-27. The neighborhood is crowded. The measurement itself was
+not found.
+
+- Wrapping each test in a transaction and rolling it back is the documented
+  default of [Rails](https://guides.rubyonrails.org/testing.html),
+  [Django](https://docs.djangoproject.com/en/5.2/topics/testing/tools/) and
+  [Spring](https://docs.spring.io/spring-framework/reference/testing/testcontext-framework/tx.html).
+- [IntegreSQL](https://github.com/allaboutapps/integresql) walks the whole
+  design space for isolated Postgres test databases, names per test
+  transactions as approach 2a and benchmarks the template approach it chose
+  instead. [pgtestdb](https://github.com/peterldowns/pgtestdb) hands out a
+  fresh database from a template in tens of milliseconds.
+  [Testcontainers](https://github.com/testcontainers/testcontainers-java) and
+  [pg_tmp](https://github.com/eradman/ephemeralpg) cover throwaway instances.
+- On the environment side, [Neon branching](https://neon.com/docs/introduction/branching)
+  gives copy on write database branches for previews, answering the cost
+  question by changing the architecture rather than measuring it.
+
+All of that prices handing out a clean database. What none of it measures is
+the pattern this repository prices: the same computation fed once through a
+write and rollback and once from an in memory copy, paired within one
+iteration. Searched Crossref, dblp, Semantic Scholar, GitHub and the general
+web. If a prior measurement exists, I could not find it.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
