@@ -2,6 +2,8 @@
 
 # preview-cost
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22128851.svg)](https://doi.org/10.5281/zenodo.22128851)
+
 **A live preview built on a transaction rollback was slower than an in memory copy in 100% of all 4,500 paired runs, and the penalty stayed near 6 to 7 ms even as the calculation itself got 5.6× heavier.**
 
 A runnable, self contained answer to what one architectural choice actually costs. Java 25, no framework, roughly 400 lines.
