@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "preview-cost"
+type: software
+authors:
+  - family-names: Semenkevich
+    given-names: Dmitriy
+    orcid: "https://orcid.org/0009-0009-3013-4978"
+version: "1.0.0"
+date-released: "2026-08-27"
+license: MIT
+repository-code: "https://github.com/dimhold/preview-cost"
+abstract: "What a rollback based preview actually costs. 4,500 paired runs on Postgres, the rollback lost every pair by a flat 6 to 7 ms."
+keywords:
+  - "PostgreSQL"
+  - "test isolation"
+  - "benchmarking"
+  - "empirical software engineering"
